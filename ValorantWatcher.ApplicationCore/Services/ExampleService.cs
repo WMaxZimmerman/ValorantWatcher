@@ -6,7 +6,8 @@ namespace ValorantWatcher.ApplicationCore.Services
     {
         public static string HelloWorld()
         {
-            return ExampleRepository.HelloWorld();
+            var repo = new ExampleRepository();
+            return repo.HelloWorld();
         }
     }
 }
