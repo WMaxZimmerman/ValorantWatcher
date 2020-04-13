@@ -1,15 +1,39 @@
 using ValorantWatcher.ApplicationCore.Services;
 using NTrospection.CLI.Attributes;
+using ValorantWatcher.Shared.Models;
 
 namespace ValorantWatcher.Console.Controllers
 {
-    [CliController("example", "An example of a CLI Controller")]
+    [CliController("window", "An example of a CLI Controller")]
     public class ExampleController
     {
-        [CliCommand("hello", "A Hello World for a CLI Project")]
-        public void HelloWorld()
+        [CliCommand("open", "A Hello World for a CLI Project")]
+        public void OpenTwich()
         {
-            System.Console.WriteLine(ExampleService.HelloWorld());
+            ExampleService.OpenTwitch();
+        }
+
+        [CliCommand("close", "A Hello World for a CLI Project")]
+        public void CloseWindow()
+        {
+            ExampleService.CloseBrowser();
+        }
+
+        [CliCommand("login", "A Hello World for a CLI Project")]
+        public void LoginToTwitch(string username, string password)
+        {
+            var user = new User
+            {
+                Name = username,
+                Password = password
+            };
+            ExampleService.LoginToTwitch(user);
+        }
+
+        [CliCommand("stream", "A Hello World for a CLI Project")]
+        public void OpenValorantStreams()
+        {
+            ExampleService.OpenValorantStreams();
         }
     }
 }
